@@ -47,7 +47,6 @@ export default {
   headless: false,
   baseUrl: "http://localhost:3000",
   testPattern: "**/*.test.ts",
-  anthropicKey: process.env.ANTHROPIC_API_KEY,
 } satisfies ShortestConfig;
 ```
 
@@ -218,7 +217,6 @@ shortest --github-code --secret=<OTP_SECRET>
 Required in `.env.local`:
 
 ```bash
-ANTHROPIC_API_KEY=your_api_key
 GITHUB_TOTP_SECRET=your_secret  # Only for GitHub auth tests
 ```
 
@@ -239,12 +237,14 @@ This guide will help you set up the Shortest web app for local development.
 ### Getting started
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/anti-work/shortest.git
 cd shortest
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install -g pnpm
 pnpm install
@@ -329,6 +329,7 @@ You'll need to set up the following services for local development. If you're no
 <summary>GitHub OAuth</summary>
 
 1. Create a GitHub OAuth App:
+
    - Go to your GitHub account settings.
    - Navigate to `Developer settings` > `OAuth Apps` > `New OAuth App`.
    - Fill in the application details:
@@ -343,7 +344,7 @@ You'll need to set up the following services for local development. If you're no
    - Select `Use custom credentials`
    - Enter your `Client ID` and `Client Secret` from the GitHub OAuth app you just created.
    - Add `repo` to the `Scopes`
-   ![Clerk Custom Credentials](https://github.com/user-attachments/assets/31d414e1-4e1e-4725-8649-ec1826c6e53e)
+     ![Clerk Custom Credentials](https://github.com/user-attachments/assets/31d414e1-4e1e-4725-8649-ec1826c6e53e)
 
 </details>
 
@@ -378,6 +379,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
 1. Make changes to the package source code in `packages/shortest/`
 
 2. Build the package and test the changes:
+
 ```bash
 # One-time build
 pnpm cli:build
@@ -390,6 +392,7 @@ pnpm shortest --help
 ```
 
 3. To test in another project:
+
 ```bash
 # In Shortest package directory
 cd packages/shortest

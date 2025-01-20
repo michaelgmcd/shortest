@@ -1,4 +1,4 @@
-import Anthropic from "@anthropic-ai/sdk";
+import Anthropic from "@anthropic-ai/bedrock-sdk";
 import { SYSTEM_PROMPT } from "../src/ai/prompts";
 import { BrowserTool } from "../src/browser/core/browser-tool";
 import { BrowserManager } from "../src/browser/manager";

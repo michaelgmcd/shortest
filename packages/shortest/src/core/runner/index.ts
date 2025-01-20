@@ -1,5 +1,5 @@
 import { pathToFileURL } from "url";
-import Anthropic from "@anthropic-ai/sdk";
+import Anthropic from "@anthropic-ai/bedrock-sdk";
 import { glob } from "glob";
 import pc from "picocolors";
 import { APIRequest, BrowserContext } from "playwright";
@@ -179,19 +179,9 @@ export class TestRunner {
       },
     });
 
-    // this may never happen as the config is initialized before this code is executed
-    if (!this.config.anthropicKey) {
-      return {
-        result: "fail" as const,
-        reason: "ANTHROPIC_KEY is not set",
-        tokenUsage: { input: 0, output: 0 },
-      };
-    }
-
     const aiClient = new AIClient(
       {
-        apiKey: this.config.anthropicKey,
-        model: "claude-3-5-sonnet-20241022",
+        model: "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
         maxMessages: 10,
         debug: this.debugAI,
       },

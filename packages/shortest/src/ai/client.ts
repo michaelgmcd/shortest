@@ -1,4 +1,4 @@
-import Anthropic from "@anthropic-ai/sdk";
+import Anthropic from "@anthropic-ai/bedrock-sdk";
 import pc from "picocolors";
 import { BashTool } from "../browser/core/bash-tool";
 import { BrowserTool } from "../browser/core/browser-tool";
@@ -15,16 +15,8 @@ export class AIClient {
   private debugMode: boolean;
 
   constructor(config: AIConfig, debugMode: boolean = false) {
-    if (!config.apiKey) {
-      throw new Error(
-        "Anthropic API key is required. Set it in shortest.config.ts or ANTHROPIC_API_KEY env var",
-      );
-    }
-
-    this.client = new Anthropic({
-      apiKey: config.apiKey,
-    });
-    this.model = "claude-3-5-sonnet-20241022";
+    this.client = new Anthropic();
+    this.model = "us.anthropic.claude-3-5-sonnet-20241022-v2:0";
     this.maxMessages = 10;
     this.debugMode = debugMode;
   }
